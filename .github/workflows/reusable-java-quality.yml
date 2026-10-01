@@ -1,0 +1,29 @@
+name: reusable-java-quality
+
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: false
+        type: string
+        default: '21'
+      maven-args:
+        required: false
+        type: string
+        default: '-DskipTests'
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ inputs.java-version }}
+          cache: 'maven'
+      - name: Run Checkstyle
+        run: mvn -q checkstyle:check ${{ inputs.maven-args }}
+      - name: Run SpotBugs
+        run: mvn -q com.github.spotbugs:spotbugs-maven-plugin:check ${{ inputs.maven-args }}

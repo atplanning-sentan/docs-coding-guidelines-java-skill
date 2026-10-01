@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maven プラグイン設定の参照用スニペット。
+  プロジェクトの pom.xml の <properties> および <build><plugins> に取り込む。
+  パスは、アプリへコピーした後のリポジトリルート templates/quality/ を前提とする。
+  正本: .agents/skills/atp-java-coding/assets/quality/README.md
+-->
+<!--
+<properties>
+    <checkstyle.version>10.18.2</checkstyle.version>
+    <maven-checkstyle-plugin.version>3.5.0</maven-checkstyle-plugin.version>
+    <spotbugs.version>4.8.6</spotbugs.version>
+    <spotbugs-maven-plugin.version>4.8.6.0</spotbugs-maven-plugin.version>
+</properties>
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <version>${maven-checkstyle-plugin.version}</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>${checkstyle.version}</version>
+        </dependency>
+    </dependencies>
+    <configuration>
+        <configLocation>templates/quality/checkstyle/checkstyle.xml</configLocation>
+        <suppressionsLocation>templates/quality/checkstyle/suppressions.xml</suppressionsLocation>
+        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+        <consoleOutput>true</consoleOutput>
+        <failsOnError>true</failsOnError>
+        <linkXRef>false</linkXRef>
+    </configuration>
+    <executions>
+        <execution>
+            <id>checkstyle-verify</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>check</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+
+<plugin>
+    <groupId>com.github.spotbugs</groupId>
+    <artifactId>spotbugs-maven-plugin</artifactId>
+    <version>${spotbugs-maven-plugin.version}</version>
+    <configuration>
+        <effort>Default</effort>
+        <threshold>Medium</threshold>
+        <xmlOutput>true</xmlOutput>
+        <excludeFilterFile>${project.basedir}/config/spotbugs/exclude.xml</excludeFilterFile>
+    </configuration>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs</artifactId>
+            <version>${spotbugs.version}</version>
+        </dependency>
+    </dependencies>
+    <executions>
+        <execution>
+            <id>spotbugs-verify</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>check</goal>
+            </goals>
+            <configuration>
+                <excludeFilterFile>${project.basedir}/config/spotbugs/exclude.xml</excludeFilterFile>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+-->

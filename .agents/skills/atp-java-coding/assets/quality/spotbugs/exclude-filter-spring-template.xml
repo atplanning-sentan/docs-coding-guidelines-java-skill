@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Spring Boot / JPA 向け SpotBugs 除外テンプレート。
+  新規プロジェクト: 本ファイルを config/spotbugs/exclude.xml にコピーし、
+  PACKAGE_ROOT_REGEX をルートパッケージの正規表現に置換する。
+  例: jp.co.example.app → jp\.co\.example\.app
+-->
+<FindBugsFilter>
+    <Match>
+        <Class name="~PACKAGE_ROOT_REGEX\..*"/>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+    <Match>
+        <Class name="~PACKAGE_ROOT_REGEX\..*"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Class name="~PACKAGE_ROOT_REGEX\.domain\..*"/>
+        <Bug pattern="UUF_UNUSED_FIELD"/>
+    </Match>
+</FindBugsFilter>
